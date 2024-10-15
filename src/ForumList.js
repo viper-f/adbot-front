@@ -1,6 +1,8 @@
 import './App.css';
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
+import ActiveForum from "./Components/ActiveForum";
+import HiddenForum from "./Components/HiddenForum";
 
 function ForumList() {
     const [forums, setForums] = useState([]);
@@ -19,18 +21,20 @@ function ForumList() {
             .catch((error) => console.log(error));
     }, []);
 
-    const arr = [];
+    const activeForums = [];
+    const hiddenForums = [];
     for (const forum of forums) {
-        arr.push(
-            <div>
-                <div>
-                    <Link to={ `/forum-edit/${forum['id']}` }>{forum['name']}</Link>
-                </div>
-            </div>
-        );
+        if (forum['hidden']) {
+            hiddenForums.push(<HiddenForum id={forum['id']} name={forum['name']} />)
+        } else {
+            activeForums.push(<ActiveForum id={forum['id']} name={forum['name']} />)
+        }
     }
 
-    return arr;
+    return <div>
+                <div id="active-forums">{activeForums}</div>
+                <div id="hidden-forums">{hiddenForums}</div>
+            </div>;
 }
 
 export default ForumList;
