@@ -27,7 +27,11 @@ function ForumList() {
         if (forum['hidden']) {
             hiddenForums.push(<HiddenForum id={forum['id']} name={forum['name']} />)
         } else {
-            activeForums.push(<ActiveForum id={forum['id']} name={forum['name']} />)
+            activeForums.push(<ActiveForum
+                id={forum['id']}
+                name={forum['name']}
+                domain={forum['domain']}
+            />)
         }
     }
 
