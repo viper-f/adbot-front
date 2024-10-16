@@ -1,12 +1,12 @@
 import {Link} from "react-router-dom";
+import logo  from '../assets/logo.svg';
 
 function Header() {
     return <header className="App-header">
-        {/*<img src={logo} className="App-logo" alt="logo"/>*/}
+        <Link to="/"><img src={logo} className="App-logo" alt="logo"/></Link>
         <ul>
-            <li><Link to="/">Home</Link></li>
             <li><Link to="/login">Login</Link></li>
-            <li><Link to="/forum-list">My Forums</Link></li>
+            <li><Link to="/forum-list">FAQ</Link></li>
         </ul>
     </header>
 }

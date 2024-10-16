@@ -2,6 +2,7 @@ import './App.css';
 import {useEffect, useState} from "react";
 import ActiveForum from "./Components/ActiveForum";
 import HiddenForum from "./Components/HiddenForum";
+import {Link} from "react-router-dom";
 
 function ForumList() {
     const [forums, setForums] = useState([]);
@@ -35,8 +36,9 @@ function ForumList() {
     }
 
     return <div>
-                <div id="active-forums">{activeForums}</div>
-                <div id="hidden-forums">{hiddenForums}</div>
+                <div id="active-forums" className="block">{activeForums}</div>
+                <Link to="/forum-add" className="block">Add Forum</Link>
+                <div id="hidden-forums" className="block">{hiddenForums}</div>
             </div>;
 }
 
